@@ -21,7 +21,7 @@ class Database
 
     // The object is created from within the class itself
     // only if the class has no instance.
-    // Singleton Desing pattern :)
+    // Singleton Design pattern :)
     public static function getInstance(): ?Database
     {
         if (self::$instance == null) {

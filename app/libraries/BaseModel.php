@@ -2,7 +2,7 @@
 
 namespace App\libraries;
 
-class BaseModel
+abstract class BaseModel
 {
 
     private ?Database $db;

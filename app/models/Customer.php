@@ -6,6 +6,9 @@ use App\libraries\BaseModel;
 
 class Customer extends BaseModel
 {
+    /**
+     * @var string
+     */
     private string $tableName = 'Customers';
 
     /**

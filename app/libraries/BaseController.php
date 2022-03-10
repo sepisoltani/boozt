@@ -4,6 +4,12 @@ namespace App\libraries;
 
 abstract class BaseController
 {
+    /**
+     * Load specific view from the views directory
+     *
+     * @param $view
+     * @param array $data
+     */
     public function view($view, $data = [])
     {
         # check for view file

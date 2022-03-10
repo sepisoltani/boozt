@@ -7,13 +7,25 @@ use App\models\OrderItem;
 
 class OrderRepository implements OrderRepositoryInterface
 {
+    /**
+     * @var Order
+     */
     private Order $model;
 
+    /**
+     * OrderRepository constructor.
+     * @param Order $order
+     */
     public function __construct(Order $order)
     {
         $this->model = $order;
     }
 
+    /**
+     * @param string $fromDate
+     * @param string $toDate
+     * @return int
+     */
     public function count(string $fromDate, string $toDate): int
     {
         $sql = "SELECT count(*) FROM {$this->model->getTableName()} WHERE (purchase_date BETWEEN ? AND ?)";
@@ -22,6 +34,11 @@ class OrderRepository implements OrderRepositoryInterface
         return intval($result->fetchColumn());
     }
 
+    /**
+     * @param string $fromDate
+     * @param string $toDate
+     * @return float
+     */
     public function sumPrice(string $fromDate, string $toDate): float
     {
         $orderItem = new OrderItem();
@@ -31,6 +48,10 @@ class OrderRepository implements OrderRepositoryInterface
         return floatval($result->fetchColumn());
     }
 
+    /**
+     * @param string $date
+     * @return int
+     */
     public function getCountByDate(string $date): int
     {
         $sql = "SELECT count(*) FROM {$this->model->getTableName()} WHERE DATE(purchase_date) = ?";

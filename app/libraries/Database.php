@@ -7,21 +7,48 @@ use PDOException;
 
 class Database
 {
+    /**
+     * @var string
+     */
     private string $host = DB_HOST;
+    /**
+     * @var string
+     */
     private string $user = DB_USER;
+    /**
+     * @var string
+     */
     private string $pass = DB_PASS;
+    /**
+     * @var string
+     */
     private string $dbname = DB_NAME;
+    /**
+     * @var int
+     */
     private int $dbport = DB_PORT;
+    /**
+     * @var PDO
+     */
     private PDO $pdo;
+    /**
+     * @var string
+     */
     private string $error;
 
 
-    // Hold the class instance.
+    /**
+     * Holds the class instance
+     * @var Database|null
+     */
     private static ?Database $instance = null;
 
-    // The object is created from within the class itself
-    // only if the class has no instance.
-    // Singleton Design pattern :)
+    /**
+     *  The object is created from within the class itself
+     *  only if the class has no instance.
+     *  Singleton Design pattern :)
+     * @return Database|null
+     */
     public static function getInstance(): ?Database
     {
         if (self::$instance == null) {
@@ -30,7 +57,10 @@ class Database
         return self::$instance;
     }
 
-    // The pdo connection is established in the private constructor.
+    /**
+     * The pdo connection is established in the private constructor.
+     * Database constructor.
+     */
     private function __construct()
     {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';port=' . $this->dbport;
@@ -45,6 +75,9 @@ class Database
         }
     }
 
+    /**
+     * Creates tables of the db
+     */
     private function createTablesIfNotExists()
     {
         // SQL statement for creating new tables

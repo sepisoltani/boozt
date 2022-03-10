@@ -3,18 +3,29 @@
 namespace App\libraries;
 
 /*
- #
- # Core Class for Creating URL and Loading Core Controllers
- # URL Format - /controller/method/param
+ * Core Class for Creating URL and Loading Core Controllers
+ * URL Format - /controller/method/param
  */
 
 class Core
 {
+    /**
+     * @var mixed|string
+     */
     protected mixed $currentController = 'Home';
+    /**
+     * @var string
+     */
     protected string $currentmethod = 'index';
+    /**
+     * @var array|false|string[]
+     */
     protected array $params = [];
 
-    // Fetch the url paramters
+    /**
+     * Parse urls
+     * @return false|string[]
+     */
     public function parseURL()
     {
         if (isset($_GET['url'])) { // if the url param is set do below
@@ -28,12 +39,18 @@ class Core
         }
     }
 
-    // Hold the class instance.
+    /**
+     * Hold the class instance.
+     * @var Core|null
+     */
     private static ?Core $instance = null;
 
-    // The object is created from within the class itself
-    // only if the class has no instance.
-    // Singleton Design pattern :)
+    /**
+     *  The object is created from within the class itself
+     *  only if the class has no instance.
+     *  Singleton Design pattern :)
+     * @return Core|null
+     */
     public static function getInstance(): ?Core
     {
         if (self::$instance == null) {
@@ -42,7 +59,10 @@ class Core
         return self::$instance;
     }
 
-   //private constructor because of singleton desing pattern
+    /**
+     * Private constructor because of singleton desing pattern
+     * Core constructor.
+     */
     private function __construct()
     {
         // If you want to output the value of the array use print_r($this->getUrl());
@@ -89,7 +109,6 @@ class Core
                 // unset the 1 index
                 unset($url[1]);
             }
-            //  echo $this->currentmethod;
         }
         /*
          * Let's take care of the other parameters, by unsetting index 0 and 1, it is easy to take care of the rest

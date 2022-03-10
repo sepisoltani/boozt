@@ -8,6 +8,9 @@ use App\libraries\BaseModel;
 
 class Order extends BaseModel
 {
+    /**
+     * @var string
+     */
     private string $tableName = 'Orders';
 
     /**

@@ -11,30 +11,57 @@ use Carbon\Carbon;
 
 class StatisticService implements StatisticServiceInterface
 {
+    /**
+     * @var CustomerRepository
+     */
     private CustomerRepository $customerRepository;
+    /**
+     * @var OrderRepository
+     */
     private OrderRepository $orderRepository;
 
+    /**
+     * StatisticService constructor.
+     */
     public function __construct()
     {
         $this->customerRepository = new CustomerRepository(new Customer());
         $this->orderRepository = new OrderRepository(new Order());
     }
 
+    /**
+     * @param string $fromDate
+     * @param string $toDate
+     * @return int
+     */
     public function getCustomersCount(string $fromDate, string $toDate): int
     {
         return $this->customerRepository->count($fromDate, $toDate);
     }
 
+    /**
+     * @param string $fromDate
+     * @param string $toDate
+     * @return float
+     */
     public function getRevenue(string $fromDate, string $toDate): float
     {
         return $this->orderRepository->sumPrice($fromDate, $toDate);
     }
 
+    /**
+     * @param string $fromDate
+     * @param string $toDate
+     * @return int
+     */
     public function getOrdersCount(string $fromDate, string $toDate): int
     {
         return $this->orderRepository->count($fromDate, $toDate);
     }
 
+    /**
+     * @return array
+     */
     public function getLastMonthOrdersCounts(): array
     {
         $results = [];
@@ -48,6 +75,9 @@ class StatisticService implements StatisticServiceInterface
 
     }
 
+    /**
+     * @return array
+     */
     public function getLastMonthCustomersCounts(): array
     {
         $results = [];

@@ -1,0 +1,21 @@
+{
+  "name": "sepehrsoltani/boozt",
+  "description": "test project for showing php skills",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app"
+    },
+    "files": [
+      "app/config/config.php"
+    ]
+  },
+  "require": {
+    "ext-pdo": "*",
+    "nesbot/carbon": "~2"
+  },
+  "config": {
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
+  }
+}

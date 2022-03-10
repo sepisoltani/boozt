@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: app
+    ports:
+        - "8080:80"
+    volumes:
+      - .:/var/www/html
+    build: .
+    restart: always
+    networks:
+      - app-network
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - "3307:3306"
+    environment:
+      MARIADB_DATABASE: "boozt"
+      MYSQL_ROOT_PASSWORD: "password"
+    networks:
+      - app-network
+    volumes:
+      - ~/maria-data:/data/db
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8083:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

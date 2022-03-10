@@ -10,4 +10,4 @@ if (DEBUG) {
     ini_set('display_errors', 'On');
 }
 //cast url for finding controllers and functions
-new Core();
+Core::getInstance();

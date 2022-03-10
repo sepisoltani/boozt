@@ -28,7 +28,22 @@ class Core
         }
     }
 
-    public function __construct()
+    // Hold the class instance.
+    private static ?Core $instance = null;
+
+    // The object is created from within the class itself
+    // only if the class has no instance.
+    // Singleton Desing pattern :)
+    public static function getInstance(): ?Core
+    {
+        if (self::$instance == null) {
+            self::$instance = new Core();
+        }
+        return self::$instance;
+    }
+
+   //private constructor because of singleton desing pattern
+    private function __construct()
     {
         // If you want to output the value of the array use print_r($this->getUrl());
         $url = $this->parseURL();

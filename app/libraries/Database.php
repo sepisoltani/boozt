@@ -15,7 +15,23 @@ class Database
     private PDO $pdo;
     private string $error;
 
-    public function __construct()
+
+    // Hold the class instance.
+    private static ?Database $instance = null;
+
+    // The object is created from within the class itself
+    // only if the class has no instance.
+    // Singleton Desing pattern :)
+    public static function getInstance(): ?Database
+    {
+        if (self::$instance == null) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+
+    // The pdo connection is established in the private constructor.
+    private function __construct()
     {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';port=' . $this->dbport;
         $options = array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"');

@@ -1,4 +1,4 @@
-![alt text](./cover.jpg "sepisoltani/boozt")
+![alt text](./cover.png "sepisoltani/boozt")
 
 ## Requirements
 
@@ -14,8 +14,16 @@ docker-compose up -d
 
 ## Usage
 
-website address: localhost:8080
-phpmyadmin address: localhost:8083
+- website address: localhost:8080
+  
+
+- phpmyadmin address: localhost:8083
 
 
+## How to make it better ?
 
+- caching database queries related to chart data.
+- adding date picker in front-end.
+- adding ORM.
+- adding logger.
+- adding routes.

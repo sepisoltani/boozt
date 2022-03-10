@@ -20,10 +20,11 @@ docker-compose up -d
 - phpmyadmin address: localhost:8083
 
 
-## How to make it better ?
+## You want to make it better ?
 
 - caching database queries related to chart data.
 - adding date picker in front-end.
 - adding ORM.
 - adding logger.
 - adding routes.
+- adding tests.

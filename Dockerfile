@@ -10,9 +10,8 @@ RUN apt-get update && apt-get install -y \
     git \
     curl
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql && a2enmod rewrite
 
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/
 

@@ -45,11 +45,11 @@ class Database
             //orders table schema
             'CREATE TABLE IF NOT EXISTS Orders (
                 id INT NOT NULL AUTO_INCREMENT,
-                user_id INT NOT NULL,
+                customer_id INT NOT NULL,
                 country VARCHAR(50) NOT NULL, 
                 device VARCHAR(50) NOT NULL, 
                 purchase_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES Customers(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                FOREIGN KEY (customer_id) REFERENCES Customers(id) ON UPDATE CASCADE ON DELETE CASCADE,
                 PRIMARY KEY(id));',
 
             //orderItems table schema

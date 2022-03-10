@@ -25,7 +25,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function sumPrice(string $fromDate, string $toDate): float
     {
         $orderItem = new OrderItem();
-        $sql = "SELECT SUM({$orderItem->getTableName()}.quantity * {$orderItem->getTableName()}.price) AS total FROM {$this->model->getTableName()} JOIN {$orderItem->getTableName()} orderItems ON (orders.id = orderItems.order_id) where (purchase_date BETWEEN ? AND ?)";
+        $sql = "SELECT SUM(quantity * price) AS total FROM {$orderItem->getTableName()} orderItems JOIN {$this->model->getTableName()} orders ON (orders.id = orderItems.order_id) where (purchase_date BETWEEN ? AND ?)";
         $result = $this->model->getDb()->getPdo()->prepare($sql);
         $result->execute([$fromDate, $toDate]);
         return floatval($result->fetchColumn());

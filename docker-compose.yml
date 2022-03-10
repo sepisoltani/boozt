@@ -12,18 +12,18 @@ services:
     networks:
       - app-network
 
-  mariadb:
-    image: mariadb:latest
-    container_name: mariadb
+  db:
+    image: mariadb
+    container_name: db
     ports:
       - "3307:3306"
     environment:
       MARIADB_DATABASE: "boozt"
-      MYSQL_ROOT_PASSWORD: "password"
+      MARIADB_ROOT_PASSWORD: "password"
     networks:
       - app-network
     volumes:
-      - ~/maria-data:/data/db
+      - ~/db-data:/data/db
 
   phpmyadmin:
     container_name: phpmyadmin

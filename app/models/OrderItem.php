@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\models;
-
 
 use App\libraries\BaseModel;
 

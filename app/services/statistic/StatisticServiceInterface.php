@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\services\statistic;
-
 
 interface StatisticServiceInterface
 {

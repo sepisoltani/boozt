@@ -2,7 +2,6 @@
 
 namespace App\repositories\customer;
 
-
 interface CustomerRepositoryInterface
 {
     /**
